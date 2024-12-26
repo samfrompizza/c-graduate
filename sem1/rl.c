@@ -1,15 +1,17 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-unsigned long long gcd(unsigned long long x, unsigned long long y) {
+long long gcd(long long x, long long y) {
+    assert(x != 0 && y != 0);
     if (x == 0)
         return y;
     if (y == 0)
         return x;
 
     while (y != 0) {
-        unsigned long long q = x % y;  
+        long long q = x % y;  
         x = y;      
         y = q;     
     }
@@ -17,12 +19,12 @@ unsigned long long gcd(unsigned long long x, unsigned long long y) {
 } 
 
 int main() {
-  unsigned long long x = 0, y = 0, g;
+  long long x = 0, y = 0, g;
   int res;
 
-  res = scanf("%llu %llu", &x, &y);
+  res = scanf("%lld %lld", &x, &y);
   assert(res == 2);
-  g = gcd(x, y);
-  printf("%llu\n", g);
+  g = gcd(abs(x), abs(y));
+  printf("%lld\n", g);
   return 0;
 }

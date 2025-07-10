@@ -3,14 +3,15 @@
 #include <assert.h>
 
 int moveright(int *arr, int key, int last) {
-  for (int i = 0; i < last; i++) {
-    if (arr[i] < key && arr[i + 1] >= key) {
-      for (int j = last; j > i; j--)
-        arr[j] = arr[j - 1];
-      return i + 1;
+  for (int i = 1; i < last; i++) {
+    if (arr[last - i] > key) {
+      arr[last - i + 1] = arr[last - i];
+    }
+    else {
+      return last - i + 1;
     }
   }
-  return last;
+  return 0;
 }
 
 void inssort(int *arr, int len) {

@@ -26,14 +26,12 @@ int main()
       max = arr[i];
   }
 
-  if (max % n == 0)
-    buck_size = (max / n);
-  if (max % n != 0)
-    buck_size = (max / n) + 1;
+  buck_size = (max / n);
   for (int i = 0; i < n; ++i)
   {
     int idx = arr[i] / buck_size;
-    if (idx >= n) idx = n - 1;
+    if (idx >= n)
+      idx = n - 1;
     struct node_t *new_node = calloc(1, sizeof(struct node_t));
     new_node->data = arr[i];
     if (buckets_top[idx] == NULL)
